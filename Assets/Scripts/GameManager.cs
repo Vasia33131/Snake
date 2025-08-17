@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     private bool isGameOver = false;
 
+    private void Start()
+    {
+        AudioManager.Instance.PlayBackgroundMusic();
+    }
+
     private void Awake()
     {
         if (Instance == null)

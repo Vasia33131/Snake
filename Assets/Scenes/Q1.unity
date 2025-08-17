@@ -2000,6 +2000,7 @@ GameObject:
   - component: {fileID: 1667781110}
   - component: {fileID: 1667781109}
   - component: {fileID: 1667781108}
+  - component: {fileID: 1667781111}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -2069,7 +2070,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1667781109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1667781111}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: LoadPreviousScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1667781109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2108,6 +2121,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667781106}
   m_CullTransparentMesh: 1
+--- !u!114 &1667781111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667781106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe1c2379aff46742b4a6ed1bf0643de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729078369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,7 +2657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91a1a919d9a6c742b46d9b6f30bef14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tale: {fileID: 1584311967}
+  _talePrefab: {fileID: 2733251152133782032, guid: 9d13d168746955e46b155b6839445399, type: 3}
 --- !u!1001 &7938518066580631690
 PrefabInstance:
   m_ObjectHideFlags: 0

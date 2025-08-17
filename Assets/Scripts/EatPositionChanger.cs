@@ -10,7 +10,26 @@ public class EatPositionChanger : MonoBehaviour, IEatDestroyer
 
     public void Destroy()
     {
-        GameManager.Instance.AddScore(1);
+        // Проверяем GameManager
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(1);
+        }
+        else
+        {
+            Debug.LogWarning("GameManager.Instance is null!");
+        }
+
+        // Проверяем AudioManager
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayEatSound();
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager.Instance is null!");
+        }
+
         GeneratePosition();
     }
 
