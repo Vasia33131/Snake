@@ -26,7 +26,7 @@ public class SnakeKeyboardInputHandler : MonoBehaviour
         if (_objectMover == null) return;
 
         _gameTime += Time.deltaTime;
-        timerText.text = "Time: " + Mathf.FloorToInt(_gameTime).ToString() + "s";
+        timerText.text = "Таймер: " + Mathf.FloorToInt(_gameTime).ToString();
 
         if (Input.GetKeyDown(_upKeyCode))
             _objectMover.Rotate(Quaternion.Euler(0, 0, 90));

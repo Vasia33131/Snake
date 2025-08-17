@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
 
         score += points;
-        scoreText.text = $"Score: {score}";
+        scoreText.text = $"Счет: {score}";
     }
 
     public void GameOver()
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return; // Защита от повторного вызова
 
         isGameOver = true;
-        finalScoreText.text = $"Final Score: {score}";
+        finalScoreText.text = $"Счет: {score}";
         gameOverPanel.SetActive(true);
 
         var snakeMovements = FindObjectsOfType<SnakeKeyboardInputHandler>();
