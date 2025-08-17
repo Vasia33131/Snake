@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class EatTaleIncrementer : MonoBehaviour
 {
-    [SerializeField]
-    private RecursivePositionRepeater _tale;
-
+    [SerializeField] private RecursivePositionRepeater _tale;
     private ICaudateObject _caudate;
+
     void Start()
     {
         _caudate = GetComponent<ICaudateObject>();
-
         if (_caudate == null)
             Debug.LogError("Отстутствует IncrementObjectMover!");
     }

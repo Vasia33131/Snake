@@ -4,28 +4,8 @@ using UnityEngine;
 
 public class RecursivePositionRepeater : MonoBehaviour, IRecursivePositionRepeater, ICaudateObject
 {
-    public void SetNextRepeater(IPositionRepeater repeater)
-    {
-        if (repeater == null || repeater == _nextRepeater)
-            return;
-
-        _nextRepeater = repeater;
-    }
-
-    public void SetPosition(Vector3 position)
-    {
-        var lastPosition = transform.position;
-
-        transform.position = position;
-
-        if (_nextRepeater != null)
-            _nextRepeater.SetPosition(lastPosition);
-    }
-
+    [SerializeField] private RecursivePositionRepeater _tale;
     private IPositionRepeater _nextRepeater;
-
-    [SerializeField]
-    private RecursivePositionRepeater _tale;
 
     public IPositionRepeater tale { get => _nextRepeater; set => _nextRepeater = value; }
 
@@ -33,16 +13,30 @@ public class RecursivePositionRepeater : MonoBehaviour, IRecursivePositionRepeat
     {
         if (_tale != null)
             SetNextRepeater(_tale);
+
+        // Устанавливаем тег для всех сегментов хвоста
+        gameObject.tag = "Tail";
+
+        // Добавляем коллайдер, если его нет
+        if (!TryGetComponent<Collider2D>(out _))
+        {
+            var collider = gameObject.AddComponent<BoxCollider2D>();
+            collider.isTrigger = true;
+        }
+    }
+
+    public void SetNextRepeater(IPositionRepeater repeater)
+    {
+        if (repeater == null || repeater == _nextRepeater) return;
+        _nextRepeater = repeater;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        var lastPosition = transform.position;
+        transform.position = position;
+
+        if (_nextRepeater != null)
+            _nextRepeater.SetPosition(lastPosition);
     }
 }
-
-public interface IPositionRepeater
-{
-    void SetPosition(Vector3 position);
-}
-
-public interface IRecursivePositionRepeater : IPositionRepeater
-{
-    void SetNextRepeater(IPositionRepeater repeater);
-}
-
